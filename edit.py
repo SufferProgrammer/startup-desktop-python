@@ -16,6 +16,8 @@ class Edit(QtGui.QWidget, editProf_ui.Ui_Form):
     def control(self):
         self.pushButton_2.clicked.connect(self.EditmyProfile)
         self.pushButton.clicked.connect(self.cancelAndBack)
+        self.lineEdit_2.setEchoMode(QtGui.QLineEdit.Password)
+        self.lineEdit_3.setEchoMode(QtGui.QLineEdit.Password)
 
     def EditmyProfile(self):
         dataChange = dbcontroller.DBControl()

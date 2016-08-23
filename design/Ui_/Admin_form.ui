@@ -167,29 +167,29 @@
     <property name="title">
      <string>Action</string>
     </property>
-    <addaction name="actionProfile"/>
+    <widget class="QMenu" name="menuProfile">
+     <property name="title">
+      <string>Profile management</string>
+     </property>
+     <widget class="QMenu" name="menuUser_profile">
+      <property name="title">
+       <string>User management</string>
+      </property>
+      <addaction name="actionEdit_user_profile"/>
+      <addaction name="actionAdd_new_user"/>
+      <addaction name="separator"/>
+      <addaction name="actionDelete_user"/>
+     </widget>
+     <addaction name="actionEdit_my_profile"/>
+     <addaction name="separator"/>
+     <addaction name="menuUser_profile"/>
+     <addaction name="actionShow_user_list"/>
+    </widget>
+    <addaction name="menuProfile"/>
     <addaction name="separator"/>
     <addaction name="actionExit_2"/>
    </widget>
-   <widget class="QMenu" name="menuUser_Management">
-    <property name="title">
-     <string>View</string>
-    </property>
-    <widget class="QMenu" name="menuUser_Management_2">
-     <property name="title">
-      <string>User Management</string>
-     </property>
-     <addaction name="actionEdit_User_Profile"/>
-     <addaction name="actionAdd_New_User"/>
-     <addaction name="separator"/>
-     <addaction name="actionDelete_User_2"/>
-    </widget>
-    <addaction name="actionMy_Profile"/>
-    <addaction name="actionUser_Profile"/>
-    <addaction name="menuUser_Management_2"/>
-   </widget>
    <addaction name="menuAction"/>
-   <addaction name="menuUser_Management"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionForgot_password">
@@ -200,11 +200,6 @@
   <action name="actionDelete_User">
    <property name="text">
     <string>Delete User</string>
-   </property>
-  </action>
-  <action name="actionProfile">
-   <property name="text">
-    <string>Profile</string>
    </property>
   </action>
   <action name="actionExit">
@@ -245,6 +240,36 @@
   <action name="actionDelete_User_2">
    <property name="text">
     <string>Delete User</string>
+   </property>
+  </action>
+  <action name="actionEdit_my_profile">
+   <property name="text">
+    <string>Edit my profile</string>
+   </property>
+  </action>
+  <action name="actionUser_profile_management">
+   <property name="text">
+    <string>User profile management</string>
+   </property>
+  </action>
+  <action name="actionDelete_user">
+   <property name="text">
+    <string>Delete user profile</string>
+   </property>
+  </action>
+  <action name="actionEdit_user_profile">
+   <property name="text">
+    <string>Edit user profile</string>
+   </property>
+  </action>
+  <action name="actionAdd_new_user">
+   <property name="text">
+    <string>Add new user</string>
+   </property>
+  </action>
+  <action name="actionShow_user_list">
+   <property name="text">
+    <string>Show user list</string>
    </property>
   </action>
  </widget>

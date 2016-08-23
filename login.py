@@ -2,6 +2,7 @@ from PyQt4 import QtCore
 from PyQt4 import QtGui
 from database import dbcontroller
 from design import login_ui
+from controller import controller
 import register
 import admin
 import member
@@ -17,6 +18,7 @@ class Login(QtGui.QWidget, login_ui.Ui_Form):
     def control(self):
         self.pushButton.clicked.connect(self.Login)
         self.pushButton_2.clicked.connect(self.Reg)
+        self.pushButton_3.clicked.connect(self.forgotPwd)
         self.lineEdit.setEchoMode(QtGui.QLineEdit.Password)
         self.lineEdit_2.setPlaceholderText("Enter Username")
         self.lineEdit.setPlaceholderText("Enter password")
@@ -68,3 +70,9 @@ class Login(QtGui.QWidget, login_ui.Ui_Form):
 
     def userInfo(self):
         return self.lineEdit_2.text()
+
+    def forgotPwd(self):
+        sendMail = controller.Controller()
+        messageFormat = 'debug mode'
+        mailTo = 'oniioniichan@gmail.com'
+        sendMail.sendMailController(messageFormat, mailTo)
