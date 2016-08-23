@@ -5,6 +5,8 @@ from design import login_ui
 import register
 import admin
 import member
+import os
+import sys
 
 class Login(QtGui.QWidget, login_ui.Ui_Form):
     def __init__(self):
@@ -18,7 +20,7 @@ class Login(QtGui.QWidget, login_ui.Ui_Form):
         self.lineEdit.setEchoMode(QtGui.QLineEdit.Password)
         self.lineEdit_2.setPlaceholderText("Enter Username")
         self.lineEdit.setPlaceholderText("Enter password")
-        self.lineEdit_2.setMaxLength(12)
+        self.lineEdit_2.setMaxLength(20)
         self.lineEdit.setMaxLength(18)
         
     def Login(self):
@@ -30,6 +32,11 @@ class Login(QtGui.QWidget, login_ui.Ui_Form):
             dataUnameAuthRes = dataAuth.loginUnameAuthenticator(dataUname)
             dataPasswdAuthRes = dataAuth.loginPasswdAutenticator(dataPasswd)
             if dataUnameAuthRes != None:
+                dataUser = self.lineEdit_2.text()
+                os.system('mkdir /tmp/project/')
+                dataCreateTempFileUname = open('/tmp/project/user_name.enc', 'w')
+                dataCreateTempFileUname.write(dataUser)
+                dataPasswd = self.lineEdit.text()
                 if dataPasswdAuthRes != None:
                     dataUserLevelAuth = dbcontroller.DBControl()
                     dataRes = dataUserLevelAuth.userlevelAuthenticator(dataUname, dataPasswd)
@@ -38,7 +45,6 @@ class Login(QtGui.QWidget, login_ui.Ui_Form):
                         self.Admin = admin.Admin()
                         self.Admin.show()
                         self.hide()
-
                     else:
                         self.Member = member.Member()
                         self.Member.show()

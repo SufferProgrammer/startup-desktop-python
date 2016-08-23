@@ -20,7 +20,7 @@ class register(QtGui.QWidget,  register_ui.Ui_Form):
         self.lineEdit_2.setPlaceholderText("Enter Your's Password")
         self.lineEdit_3.setPlaceholderText("Enter Your's Email")
         
-        self.lineEdit.setMaxLength(12)
+        self.lineEdit.setMaxLength(20)
         self.lineEdit_2.setMaxLength(18)
         self.lineEdit_3.setMaxLength(30)
         

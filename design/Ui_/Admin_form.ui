@@ -167,7 +167,6 @@
     <property name="title">
      <string>Action</string>
     </property>
-    <addaction name="actionForgot_password"/>
     <addaction name="actionProfile"/>
     <addaction name="separator"/>
     <addaction name="actionExit_2"/>

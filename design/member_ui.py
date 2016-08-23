@@ -95,7 +95,6 @@ class Ui_MainWindow(object):
         self.menuAdvanced.addAction(self.actionEdit_My_Profile)
         self.menuAdvanced.addSeparator()
         self.menuAdvanced.addAction(self.actionSuspend_My_Account)
-        self.menuAction.addAction(self.actionForgot_Password)
         self.menuAction.addAction(self.actionSee_My_Profile)
         self.menuAction.addSeparator()
         self.menuAction.addAction(self.menuAdvanced.menuAction())

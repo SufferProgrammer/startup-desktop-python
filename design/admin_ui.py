@@ -114,7 +114,6 @@ class Ui_MainWindow(object):
         self.actionAdd_New_User.setObjectName(_fromUtf8("actionAdd_New_User"))
         self.actionDelete_User_2 = QtGui.QAction(MainWindow)
         self.actionDelete_User_2.setObjectName(_fromUtf8("actionDelete_User_2"))
-        self.menuAction.addAction(self.actionForgot_password)
         self.menuAction.addAction(self.actionProfile)
         self.menuAction.addSeparator()
         self.menuAction.addAction(self.actionExit_2)

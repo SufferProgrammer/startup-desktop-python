@@ -4,6 +4,7 @@ class DBControl():
     def __init__(self):
         self.connect = mariaDB.connect(host = '127.0.0.1',  user='developer', password = '',  database = 'project_db' )
         self.cursor = self.connect.cursor()
+
         
     def commConn(self):
         self.connect.commit()
@@ -22,6 +23,12 @@ class DBControl():
         result = self.cursor.fetchone()
         return result
 
+    def getId(self):
+        command = "SELECT id FROM users WHERE username='%s' LIMIT 1" %(unameDataDecript)
+        fileReadUnameFromResources.close()
+        self.executeQuery(command)
+        result = self.cursor.fetchone()
+        return result
 
     def loginPasswdAutenticator(self, data):
         command = "SELECT password FROM users WHERE username='%s'" % (data)
@@ -37,6 +44,14 @@ class DBControl():
 
     def suspendUser(self, username):
         command = "DELETE FROM users WHERE username='%s' LIMIT 1" %(username)
+        self.executeQuery(command)
+        self.commConn()
+
+    def ChangeUserStatus(self, dataUname, dataPasswd, dataEmail):
+        fileReadUnameFromResources = open('/tmp/project/user_name.enc', 'r')
+        unameDataDecript = fileReadUnameFromResources.read()
+
+        command = "UPDATE users SET username = '%s', password = '%s', email = '%s' WHERE username='%s'" %(dataUname, dataPasswd, dataEmail, str(unameDataDecript))
         self.executeQuery(command)
         self.commConn()
 

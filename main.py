@@ -1,7 +1,8 @@
 from PyQt4 import QtCore
 from PyQt4 import QtGui
-from register import *
-from login import *
+from database import dbcontroller
+import register
+import login
 import sys
 
 class Main(QtGui.QWidget):

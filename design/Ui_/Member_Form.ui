@@ -151,7 +151,6 @@
      <addaction name="separator"/>
      <addaction name="actionSuspend_My_Account"/>
     </widget>
-    <addaction name="actionForgot_Password"/>
     <addaction name="actionSee_My_Profile"/>
     <addaction name="separator"/>
     <addaction name="menuAdvanced"/>
