@@ -55,5 +55,11 @@ class DBControl():
         self.executeQuery(command)
         self.commConn()
 
+    def forgetPasswdUserSpecified(self, username, emailAddr):
+        command = "SELECT password FROM users WHERE username='%s' AND email='%s' LIMIT 1" %(username, emailAddr)
+        self.executeQuery(command)
+        result = self.cursor.fetchone()
+        return result
+
     def connectionClose(self):
         self.connect.close()

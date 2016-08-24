@@ -6,6 +6,7 @@ from controller import controller
 import register
 import admin
 import member
+import forgot_pw
 import os
 import sys
 
@@ -35,7 +36,6 @@ class Login(QtGui.QWidget, login_ui.Ui_Form):
             dataPasswdAuthRes = dataAuth.loginPasswdAutenticator(dataPasswd)
             if dataUnameAuthRes != None:
                 dataUser = self.lineEdit_2.text()
-                os.system('mkdir /tmp/project/')
                 dataCreateTempFileUname = open('/tmp/project/user_name.enc', 'w')
                 dataCreateTempFileUname.write(dataUser)
                 dataPasswd = self.lineEdit.text()
@@ -72,9 +72,6 @@ class Login(QtGui.QWidget, login_ui.Ui_Form):
         return self.lineEdit_2.text()
 
     def forgotPwd(self):
-        sendMail = controller.Controller()
-        messageFormat = 'debug mode'
-        mailTo = 'oniioniichan@gmail.com'
-        data = sendMail.sendMailController(messageFormat, mailTo)
-        QtGui.QMessageBox.information(self, 'Success', "Password has been sent to your's email.\nplease check your's mail")
-
+        self.ForgotForm = forgot_pw.ForgotPw()
+        self.ForgotForm.show()
+        self.hide()
