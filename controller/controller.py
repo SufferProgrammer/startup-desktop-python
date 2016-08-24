@@ -9,10 +9,8 @@ class Controller():
         self.server = smtplib.SMTP('smtp.gmail.com:587')
         self.server.ehlo()
         self.server.starttls()
-        self.server.login(self.password,  self.username)
+        self.server.login(self.username, self.password)
 
-        self.massage = messageFormat
-        self.mailto = mailTo
         self.fromPypiji = 'pypijidevel@gmail.com'
-        self.server.sendmail(self.fromPypiji, self.mailto,  self.message)
+        self.server.sendmail(self.fromPypiji, mailTo, messageFormat)
         

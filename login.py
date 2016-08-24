@@ -75,4 +75,6 @@ class Login(QtGui.QWidget, login_ui.Ui_Form):
         sendMail = controller.Controller()
         messageFormat = 'debug mode'
         mailTo = 'oniioniichan@gmail.com'
-        sendMail.sendMailController(messageFormat, mailTo)
+        data = sendMail.sendMailController(messageFormat, mailTo)
+        QtGui.QMessageBox.information(self, 'Success', "Password has been sent to your's email.\nplease check your's mail")
+
