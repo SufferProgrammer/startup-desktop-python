@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="Image">
+    <file>image/python-256.png</file>
+  </qresource>
+</RCC>
