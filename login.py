@@ -27,7 +27,6 @@ class Login(QtGui.QWidget, login_ui.Ui_Form):
         self.lineEdit.setMaxLength(18)
         
     def Login(self):
-        dataAuthentication = dbcontroller.DBControl()
         dataUname = self.lineEdit_2.text()
         dataPasswd = self.lineEdit.text()
         if dataUname and dataPasswd != '':
@@ -36,9 +35,19 @@ class Login(QtGui.QWidget, login_ui.Ui_Form):
             dataPasswdAuthRes = dataAuth.loginPasswdAutenticator(dataPasswd)
             if dataUnameAuthRes != None:
                 dataUser = self.lineEdit_2.text()
+                os.system('mkdir /tmp/project/')
                 dataCreateTempFileUname = open('/tmp/project/user_name.enc', 'w')
                 dataCreateTempFileUname.write(dataUser)
+                dataCreateTempFileUname.close()
                 dataPasswd = self.lineEdit.text()
+
+                dataHookMailAddr = dbcontroller.DBControl()
+                data = dataHookMailAddr.hookEmailAddr()
+                toText = ''.join(map(str, data))
+                emailHookToTemp = open('/tmp/project/user_email.enc', 'w')
+                emailHookToTemp.write(toText)
+                emailHookToTemp.close()
+
                 if dataPasswdAuthRes != None:
                     dataUserLevelAuth = dbcontroller.DBControl()
                     dataRes = dataUserLevelAuth.userlevelAuthenticator(dataUname, dataPasswd)

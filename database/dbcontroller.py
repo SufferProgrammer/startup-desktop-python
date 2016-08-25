@@ -17,8 +17,8 @@ class DBControl():
         self.executeQuery(command)
         self.commConn()
 
-    def loginUnameAuthenticator(self,  data):
-        command = "SELECT username FROM users WHERE username='%s'" %(data)
+    def loginUnameAuthenticator(self,  dataUname):
+        command = "SELECT username FROM users WHERE username='%s'" %(dataUname)
         self.executeQuery(command)
         result = self.cursor.fetchone()
         return result
@@ -30,8 +30,8 @@ class DBControl():
         result = self.cursor.fetchone()
         return result
 
-    def loginPasswdAutenticator(self, data):
-        command = "SELECT password FROM users WHERE username='%s'" % (data)
+    def loginPasswdAutenticator(self, dataPasswd):
+        command = "SELECT password FROM users WHERE username='%s'" % (dataPasswd)
         self.executeQuery(command)
         result = self.cursor.fetchone()
         return result
@@ -57,6 +57,14 @@ class DBControl():
 
     def forgetPasswdUserSpecified(self, username, emailAddr):
         command = "SELECT password FROM users WHERE username='%s' AND email='%s' LIMIT 1" %(username, emailAddr)
+        self.executeQuery(command)
+        result = self.cursor.fetchone()
+        return result
+
+    def hookEmailAddr(self):
+        openFileUname = open('/tmp/project/user_name.enc', 'r')
+        username = openFileUname.read()
+        command = "SELECT email FROM users WHERE username = '%s' LIMIT 1" %(str(username))
         self.executeQuery(command)
         result = self.cursor.fetchone()
         return result

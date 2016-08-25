@@ -26,8 +26,15 @@ class Member(QtGui.QMainWindow, member_ui.Ui_MainWindow):
         self.actionEdit_My_Profile.setStatusTip('Edit my Profile')
         self.actionSuspend_My_Account.triggered.connect(self.suspendMe)
         self.actionSuspend_My_Account.setStatusTip('Suspend my account')
-        # self.actionSee_My_Profile.triggered.connect(self.openMine)
-        self.actionSee_My_Profile.setStatusTip('See my own account')
+
+        getTempEmail = open('/tmp/project/user_email.enc', 'r')
+        email = getTempEmail.read()
+
+        getTempUname = open('/tmp/project/user_name.enc', 'r')
+        Uname = getTempUname.read()
+
+        self.Username.setText(str(Uname))
+        self.Email.setText(str(email))
 
     def ForgotPasswd(self):
         self.Forgot = forgot_pw.ForgotPw()
@@ -40,8 +47,7 @@ class Member(QtGui.QMainWindow, member_ui.Ui_MainWindow):
         self.hide()
 
     def exit(self):
-        os.remove('/tmp/project/user_name.enc')
-        os.removedirs('/tmp/project')
+        os.system('rm -r /tmp/project')
         dbClose = dbcontroller.DBControl()
         dbClose.connectionClose()
         QtCore.QCoreApplication.instance().quit()
@@ -52,8 +58,7 @@ class Member(QtGui.QMainWindow, member_ui.Ui_MainWindow):
         self.hide()
 
     def logOut(self):
-        os.remove('/tmp/project/user_name.enc')
-        os.removedirs('/tmp/project')
+        os.system('rm -r /tmp/project')
         disconnectDB = dbcontroller.DBControl()
         disconnectDB.connectionClose()
         self.logout = login.Login()
