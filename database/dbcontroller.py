@@ -23,13 +23,6 @@ class DBControl():
         result = self.cursor.fetchone()
         return result
 
-    def getId(self):
-        command = "SELECT id FROM users WHERE username='%s' LIMIT 1" %(unameDataDecript)
-        fileReadUnameFromResources.close()
-        self.executeQuery(command)
-        result = self.cursor.fetchone()
-        return result
-
     def loginPasswdAutenticator(self, dataPasswd):
         command = "SELECT password FROM users WHERE username='%s'" % (dataPasswd)
         self.executeQuery(command)

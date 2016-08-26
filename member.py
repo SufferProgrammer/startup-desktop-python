@@ -2,7 +2,6 @@ from PyQt4 import QtCore
 from PyQt4 import QtGui
 from design import member_ui
 from database import dbcontroller
-from controller import controller
 import confirm_suspend
 import login
 import forgot_pw

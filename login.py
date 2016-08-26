@@ -2,13 +2,11 @@ from PyQt4 import QtCore
 from PyQt4 import QtGui
 from database import dbcontroller
 from design import login_ui
-from controller import controller
 import register
 import admin
 import member
 import forgot_pw
 import os
-import sys
 
 class Login(QtGui.QWidget, login_ui.Ui_Form):
     def __init__(self):
