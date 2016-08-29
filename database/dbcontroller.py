@@ -5,7 +5,6 @@ class DBControl():
         self.connect = DBS.connect('database/database.db')
         self.cursor = self.connect.cursor()
 
-        
     def commConn(self):
         self.connect.commit()
         
@@ -24,7 +23,7 @@ class DBControl():
         return result
 
     def loginPasswdAutenticator(self, dataPasswd):
-        command = "SELECT password FROM users WHERE username='%s'" % (dataPasswd)
+        command = "SELECT password FROM users WHERE password='%s'" % (dataPasswd)
         self.executeQuery(command)
         result = self.cursor.fetchone()
         return result
