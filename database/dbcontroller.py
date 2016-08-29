@@ -1,8 +1,8 @@
-import mysql.connector as mariaDB
+import sqlite3 as DBS
 
 class DBControl():
     def __init__(self):
-        self.connect = mariaDB.connect(host = '127.0.0.1',  user='developer', password = '',  database = 'project_db' )
+        self.connect = DBS.connect('database/database.db')
         self.cursor = self.connect.cursor()
 
         
