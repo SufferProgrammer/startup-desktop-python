@@ -6,9 +6,9 @@ class Controller():
         self.username = 'pypijidevel@gmail.com'
         self.password = 'lolichan123'
     
-    def sendMailController(self, mailRecipient, emailMessage):
+    def sendMailController(self, mailRecipient, passwd):
 
-        message = 'Hei howdy users\nThis is yours apps developer, you have been lost yours password right ?\nBelow is yours password\n\n"%s"\n\nDont lost yours password again next time okay ;D' %(emailMessage)
+        message = 'Hei howdy users\nThis is yours apps developer, you have been lost yours password right ?\nBelow is yours password"\n\n"%s"\n\nDont lost yours password again next time okay ;D' %(passwd)
 
         self.server = smtplib.SMTP('smtp.gmail.com:587')
         self.server.ehlo()

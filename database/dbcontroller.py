@@ -34,10 +34,16 @@ class DBControl():
         result = self.cursor.fetchone()
         return result
 
-    def suspendUser(self, username):
-        command = "DELETE FROM users WHERE username='%s' LIMIT 1" %(username)
+    def suspendUser(self, username, email):
+        command = "DELETE FROM users WHERE username='%s' AND email='%s' LIMIT 1" %(username, email)
         self.executeQuery(command)
         self.commConn()
+
+    def getUserLevel(self, username, email):
+        command = "SELECT user_level FROM users WHERE username='%s' AND email='%s' LIMIT 1" %(username, email)
+        self.executeQuery(command)
+        result = self.cursor.fetchone()
+        return result
 
     def ChangeUserStatus(self, dataUname, dataPasswd, dataEmail):
         fileReadUnameFromResources = open('/tmp/project/user_name.enc', 'r')
