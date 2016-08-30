@@ -160,7 +160,7 @@
      <x>0</x>
      <y>0</y>
      <width>700</width>
-     <height>23</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuAction">
@@ -183,11 +183,10 @@
      <addaction name="actionEdit_my_profile"/>
      <addaction name="separator"/>
      <addaction name="menuUser_profile"/>
-     <addaction name="actionShow_user_list"/>
     </widget>
     <addaction name="menuProfile"/>
     <addaction name="separator"/>
-    <addaction name="actionExit_2"/>
+    <addaction name="actionExit_3"/>
    </widget>
    <addaction name="menuAction"/>
   </widget>
@@ -270,6 +269,11 @@
   <action name="actionShow_user_list">
    <property name="text">
     <string>Show user list</string>
+   </property>
+  </action>
+  <action name="actionExit_3">
+   <property name="text">
+    <string>Exit</string>
    </property>
   </action>
  </widget>

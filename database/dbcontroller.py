@@ -16,6 +16,11 @@ class DBControl():
         self.executeQuery(command)
         self.commConn()
 
+    def addUserLevelAdmin(self, uname, passwd, mail):
+        command = "INSERT INTO users(username, password, email, user_level) VALUES('%s', '%s', '%s', '1')" %(uname, passwd,  mail)
+        self.executeQuery(command)
+        self.commConn()
+
     def loginUnameAuthenticator(self,  dataUname):
         command = "SELECT username FROM users WHERE username='%s'" %(dataUname)
         self.executeQuery(command)
