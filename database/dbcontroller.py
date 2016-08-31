@@ -72,5 +72,17 @@ class DBControl():
         result = self.cursor.fetchone()
         return result
 
+    def adminViewListRow(self):
+        command = "SELECT * FROM users"
+        self.executeQuery(command)
+        result = self.cursor.fetchall()
+        return result
+
+    def adminGetAllData(self):
+        command = "SELECT * FROM users"
+        self.executeQuery(command)
+        result = self.cursor.fetchall()
+        return result
+
     def connectionClose(self):
         self.connect.close()

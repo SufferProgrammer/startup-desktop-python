@@ -20,6 +20,7 @@ class Admin(QtGui.QMainWindow, admin_ui.Ui_MainWindow):
         self.actionExit_3.triggered.connect(self.exit)
         self.actionAdd_New_User.setStatusTip('Add new user in admin mode')
         self.actionAdd_new_user.triggered.connect(self.makeNewUsr)
+        self.tabListViewConfig()
 
     def logOut(self):
         closeConnection = dbcontroller.DBControl()
@@ -37,3 +38,27 @@ class Admin(QtGui.QMainWindow, admin_ui.Ui_MainWindow):
         closeDBConnection = dbcontroller.DBControl()
         closeDBConnection.connectionClose()
         QtCore.QCoreApplication.instance().quit()
+
+    def tabListViewConfig(self):
+        dataGetData = dbcontroller.DBControl()
+        resRowFetchRow = dataGetData.adminViewListRow()
+        dataServedToListView = dataGetData.adminGetAllData()
+        self.tableWidget.setRowCount(len(resRowFetchRow))
+        self.tableWidget.setColumnCount(4)
+        # self.tableWidget.horizontalHeader().setStretch(True)
+        self.tableWidget.setHorizontalHeaderLabels(['Username', 'Password', 'Email', 'user_level'])
+        for i, item  in enumerate(dataServedToListView):
+            Uname = QtGui.QTableWidgetItem(str(item[1]))
+            passwd = QtGui.QTableWidgetItem(str(item[2]))
+            email = QtGui.QTableWidgetItem(str(item[3]))
+            uLevel = QtGui.QTableWidgetItem(str(item[4]))
+
+            self.tableWidget.setItem(i, 0, Uname)
+            self.tableWidget.setItem(i, 1, passwd)
+            self.tableWidget.setItem(i, 2, email)
+            self.tableWidget.setItem(i, 3, uLevel)
+
+            dataCloseToRefresh = dbcontroller.DBControl()
+            dataCloseToRefresh.connectionClose()
+
+        QtCore.QTimer.singleShot(1000, self.tabListViewConfig)
