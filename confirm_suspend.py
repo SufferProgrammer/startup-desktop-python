@@ -15,6 +15,7 @@ class Confirm(QtGui.QWidget, confirm_ui.Ui_Form):
     def control(self):
         self.pushButton.clicked.connect(self.suspend)
         self.pushButton_2.clicked.connect(self.goback)
+        self.screenControl()
 
     def goback(self):
         self.home = member.Member()
@@ -43,3 +44,8 @@ class Confirm(QtGui.QWidget, confirm_ui.Ui_Form):
             QtGui.QMessageBox.critical(self, 'Error', 'Resctricted account !')
             pass
 
+    def screenControl(self):
+        setGeometry = self.frameGeometry()
+        setWindowsPosition = QtGui.QDesktopWidget().availableGeometry().center()
+        setGeometry.moveCenter(setWindowsPosition)
+        self.move(setGeometry.topLeft())

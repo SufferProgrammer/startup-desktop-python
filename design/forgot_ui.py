@@ -86,7 +86,7 @@ class Ui_Form(object):
         Form.setWindowTitle(_translate("Form", "Forgot password", None))
         self.label_3.setText(_translate("Form", "Forgot Password", None))
         self.label.setText(_translate("Form", "Email", None))
-        self.label_2.setText(_translate("Form", "Username (optional)", None))
-        self.pushButton.setText(_translate("Form", "Send mail", None))
+        self.label_2.setText(_translate("Form", "Username", None))
+        self.pushButton.setText(_translate("Form", "Forgot Passwd", None))
         self.pushButton_2.setText(_translate("Form", "Cancel", None))
 

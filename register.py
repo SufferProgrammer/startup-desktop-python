@@ -23,6 +23,8 @@ class register(QtGui.QWidget,  register_ui.Ui_Form):
         self.lineEdit.setMaxLength(20)
         self.lineEdit_2.setMaxLength(18)
         self.lineEdit_3.setMaxLength(30)
+
+        self.screenControl()
         
     def Register(self):
         dataValidationUsername = self.lineEdit.text()
@@ -57,3 +59,9 @@ class register(QtGui.QWidget,  register_ui.Ui_Form):
         self.backMain = login.Login()
         self.backMain.show()
         self.hide()
+
+    def screenControl(self):
+        setGeometry = self.frameGeometry()
+        setWindowsPosition = QtGui.QDesktopWidget().availableGeometry().center()
+        setGeometry.moveCenter(setWindowsPosition)
+        self.move(setGeometry.topLeft())

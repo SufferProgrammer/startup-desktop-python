@@ -18,6 +18,7 @@ class Edit(QtGui.QWidget, editProf_ui.Ui_Form):
         self.pushButton.clicked.connect(self.cancelAndBack)
         self.lineEdit_2.setEchoMode(QtGui.QLineEdit.Password)
         self.lineEdit_3.setEchoMode(QtGui.QLineEdit.Password)
+        self.screenControl()
 
     def EditmyProfile(self):
         dataChange = dbcontroller.DBControl()
@@ -47,3 +48,10 @@ class Edit(QtGui.QWidget, editProf_ui.Ui_Form):
         self.backToMain = member.Member()
         self.backToMain.show()
         self.hide()
+
+
+    def screenControl(self):
+        setGeometry = self.frameGeometry()
+        setWindowsPosition = QtGui.QDesktopWidget().availableGeometry().center()
+        setGeometry.moveCenter(setWindowsPosition)
+        self.move(setGeometry.topLeft())

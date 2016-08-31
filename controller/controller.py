@@ -1,3 +1,4 @@
+from PyQt4 import QtGui
 import smtplib
 
 
@@ -16,4 +17,3 @@ class Controller():
         self.server.login(self.username, self.password)
         self.fromPypiji = 'pypijidevel@gmail.com'
         self.server.sendmail(self.username, mailRecipient, message)
-        

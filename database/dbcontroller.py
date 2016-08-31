@@ -39,7 +39,13 @@ class DBControl():
         result = self.cursor.fetchone()
         return result
 
-    def suspendUser(self, username, email):
+    def suspendUser(self):
+        readUnameForSuspend = open('/tmp/project/user_name.enc', 'r')
+        readEmailForSuspend = open('/tmp/project/user_email.enc', 'r')
+
+        username = readUnameForSuspend.read()
+        email = readEmailForSuspend.read()
+
         command = "DELETE FROM users WHERE username='%s' AND email='%s' LIMIT 1" %(username, email)
         self.executeQuery(command)
         self.commConn()

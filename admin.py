@@ -16,11 +16,13 @@ class Admin(QtGui.QMainWindow, admin_ui.Ui_MainWindow):
 
     def controller(self):
         self.pushButton_2.clicked.connect(self.logOut)
+        self.pushButton.clicked.connect(self.test)
         self.actionExit_3.setStatusTip('Exit admin session')
         self.actionExit_3.triggered.connect(self.exit)
         self.actionAdd_New_User.setStatusTip('Add new user in admin mode')
         self.actionAdd_new_user.triggered.connect(self.makeNewUsr)
         self.tabListViewConfig()
+        self.screenControl()
 
     def logOut(self):
         closeConnection = dbcontroller.DBControl()
@@ -61,4 +63,15 @@ class Admin(QtGui.QMainWindow, admin_ui.Ui_MainWindow):
             dataCloseToRefresh = dbcontroller.DBControl()
             dataCloseToRefresh.connectionClose()
 
-        QtCore.QTimer.singleShot(1000, self.tabListViewConfig)
+        # QtCore.QTimer.singleShot(1000, self.tabListViewConfig)
+        # self.tableWidget.selectedItems()
+
+    def screenControl(self):
+        setGeometry = self.frameGeometry()
+        setWindowsPosition = QtGui.QDesktopWidget().availableGeometry().center()
+        setGeometry.moveCenter(setWindowsPosition)
+        self.move(setGeometry.topLeft())
+
+    def test(self):
+        for data in enume
+        self.tableWidget.removeRow(0)

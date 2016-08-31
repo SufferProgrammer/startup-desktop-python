@@ -23,7 +23,9 @@ class Login(QtGui.QWidget, login_ui.Ui_Form):
         self.lineEdit.setPlaceholderText("Enter password")
         self.lineEdit_2.setMaxLength(20)
         self.lineEdit.setMaxLength(18)
-        
+
+        self.screenControl()
+
     def Login(self):
         dataUname = self.lineEdit_2.text()
         dataPasswd = self.lineEdit.text()
@@ -82,3 +84,9 @@ class Login(QtGui.QWidget, login_ui.Ui_Form):
         self.ForgotForm = forgot_pw.ForgotPw()
         self.ForgotForm.show()
         self.hide()
+
+    def screenControl(self):
+        setGeometry = self.frameGeometry()
+        setWindowsPosition = QtGui.QDesktopWidget().availableGeometry().center()
+        setGeometry.moveCenter(setWindowsPosition)
+        self.move(setGeometry.topLeft())

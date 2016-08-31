@@ -25,13 +25,12 @@ class Member(QtGui.QMainWindow, member_ui.Ui_MainWindow):
         self.actionEdit_My_Profile.setStatusTip('Edit my Profile')
         self.actionSuspend_My_Account.triggered.connect(self.suspendMe)
         self.actionSuspend_My_Account.setStatusTip('Suspend my account')
+        self.screenControl()
 
         getTempEmail = open('/tmp/project/user_email.enc', 'r')
         email = getTempEmail.read()
-
         getTempUname = open('/tmp/project/user_name.enc', 'r')
         Uname = getTempUname.read()
-
         self.Username.setText(str(Uname))
         self.Email.setText(str(email))
 
@@ -41,8 +40,13 @@ class Member(QtGui.QMainWindow, member_ui.Ui_MainWindow):
         self.hide()
 
     def suspendMe(self):
-        self.confirm = confirm_suspend.Confirm()
-        self.confirm.show()
+        databaseOperation = dbcontroller.DBControl()
+        databaseOperation.suspendUser()
+        databaseOperation.connectionClose()
+
+        QtGui.QMessageBox.warning(self, 'Success', "Your's account has been suspended")
+        self.goLogin = login.Login()
+        self.goLogin.show()
         self.hide()
 
     def exit(self):
@@ -64,3 +68,8 @@ class Member(QtGui.QMainWindow, member_ui.Ui_MainWindow):
         self.logout.show()
         self.hide()
 
+    def screenControl(self):
+        setGeometry = self.frameGeometry()
+        setWindowsPosition = QtGui.QDesktopWidget().availableGeometry().center()
+        setGeometry.moveCenter(setWindowsPosition)
+        self.move(setGeometry.topLeft())

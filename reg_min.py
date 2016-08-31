@@ -4,7 +4,6 @@ from database import dbcontroller
 from PyQt4 import QtCore
 from PyQt4 import QtGui
 import admin
-import login
 import sys
 
 class Register(QtGui.QWidget, register_ui.Ui_Form):
@@ -16,6 +15,7 @@ class Register(QtGui.QWidget, register_ui.Ui_Form):
     def control(self):
         self.pushButton.clicked.connect(self.crtUser)
         self.pushButton_2.clicked.connect(self.quitMe)
+        self.screenControl()
 
     def crtUser(self):
         dataWriteInfo = dbcontroller.DBControl()
@@ -54,3 +54,9 @@ class Register(QtGui.QWidget, register_ui.Ui_Form):
         self.goback = admin.Admin()
         self.goback.show()
         self.hide()
+
+    def screenControl(self):
+        setGeometry = self.frameGeometry()
+        setWindowsPosition = QtGui.QDesktopWidget().availableGeometry().center()
+        setGeometry.moveCenter(setWindowsPosition)
+        self.move(setGeometry.topLeft())
