@@ -65,7 +65,7 @@ class DBControl():
         self.commConn()
 
     def forgetPasswdUserSpecified(self, username, emailAddr):
-        command = "SELECT password FROM users WHERE username='%s' AND email='%s' LIMIT 1" %(username, emailAddr)
+        command = "SELECT password FROM users WHERE username='%s' OR email='%s' LIMIT 1" %(username, emailAddr)
         self.executeQuery(command)
         result = self.cursor.fetchone()
         return result
@@ -89,6 +89,11 @@ class DBControl():
         self.executeQuery(command)
         result = self.cursor.fetchall()
         return result
+
+    def adminDelete(self, username, email):
+        command = "DELETE FROM users WHERE username = '%s' OR password = '%s'" %(username, email)
+        self.executeQuery(command)
+        self.commConn()
 
     def connectionClose(self):
         self.connect.close()
